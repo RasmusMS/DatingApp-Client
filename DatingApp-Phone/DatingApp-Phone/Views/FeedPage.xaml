@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DatingApp_Phone.Views.FeedPage"
+             Shell.NavBarIsVisible="False"
+             Title="{Binding Title}">
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <StackLayout BackgroundColor="#2ed2ff" VerticalOptions="Fill" HorizontalOptions="Fill">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,5,0,5" VerticalOptions="FillAndExpand">
+                        <Label HorizontalOptions="Center" Text="Your Feed" TextColor="White" FontSize="Title"/>
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" Padding="10,0,0,0" Orientation="Vertical">
+                <Label Padding="0,10,0,0" Text="{Binding ShowName}" TextColor="Black" FontSize="Title" HorizontalOptions="Center"/>
+                <Image Source="profile.png" HeightRequest="250" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Padding="10,10,10,0" Orientation="Vertical">
+                <Label Text="About Me:" TextColor="Gray" FontSize="Medium"/>
+                <Label Text="{Binding ShowBio}" TextColor="Black" FontSize="Medium"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="3" Padding="20,10,10,0" Orientation="Vertical">
+                <Label Text="My lifestyles:" TextColor="Gray" FontSize="Medium"/>
+                <StackLayout BindableLayout.ItemsSource="{ Binding ShowLifestyles }">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding type}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Grid.Row="3" Padding="250,10,10,0" Orientation="Vertical">
+                <Label Text="My interests:" TextColor="Gray" FontSize="Medium"/>
+                <StackLayout BindableLayout.ItemsSource="{ Binding ShowInterests }">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding name}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Grid.Row="4" Padding="10,0,10,0" Orientation="Horizontal" HorizontalOptions="Center" Spacing="50">
+                <Button 
+                VerticalOptions="Center" 
+                BackgroundColor="Orange"
+                ImageSource="cross.png"
+                CornerRadius="30"
+                Command="{Binding ContinueFromDislike}"/>
+                <Button 
+                VerticalOptions="Center" 
+                BackgroundColor="Green"
+                ImageSource="heart.png"
+                CornerRadius="30"
+                Command="{Binding ContinueFromLike}"/>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

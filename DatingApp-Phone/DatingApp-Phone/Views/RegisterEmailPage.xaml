@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DatingApp_Phone.Views.RegisterEmailPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout Padding="50,150,50,0" Spacing="50" VerticalOptions="Center">
+            <Label HorizontalOptions="Center" Text="{ Binding Headline }" TextColor="#2ed2ff" FontSize="Title"/>
+            <Entry Keyboard="Email" Placeholder="Name" Text="{Binding EntryEmail}" PlaceholderColor="#2ed2ff"/>
+            <Button 
+                VerticalOptions="Center" 
+                BackgroundColor="#2ed2ff"
+                Text="Continue" 
+                Command="{Binding ContinueFromEmail}"/>
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

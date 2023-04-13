@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DatingApp_Phone.Views.ProfilePage"
+             Shell.NavBarIsVisible="False"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <StackLayout BackgroundColor="#2ed2ff" VerticalOptions="Fill" HorizontalOptions="Fill">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,5,0,5" VerticalOptions="FillAndExpand">
+                        <Label HorizontalOptions="Center" Text="Your Profile" TextColor="White" FontSize="Title"/>
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" Padding="10,5,0,0" Orientation="Horizontal">
+                <Image Source="profile.png" HeightRequest="150" />
+                <Label Padding="40,50,0,0" Text="{Binding ShowName}" TextColor="Black" FontSize="Title"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Padding="10,0,0,0" Orientation="Horizontal">
+                <Image Source="profile.png" HeightRequest="100" />
+                <Image Source="profile.png" HeightRequest="100" />
+                <Image Source="profile.png" HeightRequest="100" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="3" Padding="10,10,10,0" Orientation="Vertical">
+                <Label Text="Biography:" TextColor="Black" FontSize="Medium"/>
+                <Editor Text="{Binding ShowBio}" TextColor="Gray" AutoSize="TextChanges" MaxLength="200" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="4" Padding="10,20,10,20" Orientation="Vertical">
+                <Label Text="Your Lifestyle Choices:" TextColor="Black" FontSize="Medium"/>
+                <Picker Title="Sexual Orientation"></Picker>
+                <Picker Title="Height"></Picker>
+                <Picker Title="Language"></Picker>
+                <Picker Title="Religion"></Picker>
+                <Picker Title="Civil Status"></Picker>
+                <Picker Title="Smoking"></Picker>
+                <Picker Title="Drinking"></Picker>
+            </StackLayout>
+
+            <StackLayout Grid.Row="5" Padding="10,20,10,20" Orientation="Vertical">
+                <Label Text="My interests:" TextColor="Gray" FontSize="Medium"/>
+                <StackLayout BindableLayout.ItemsSource="{ Binding ShowInterests }">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding name}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Grid.Row="6" Padding="10,0,10,20" Orientation="Horizontal">
+                <Label Text="Your Birthday:" TextColor="Black" FontSize="Medium"/>
+                <Label Text="{Binding ShowBirth, StringFormat='{0:MMMM dd, yyyy}'}" TextColor="Gray" FontSize="Medium"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="7" Padding="10,0,10,20" Orientation="Horizontal">
+                <Label Text="Your E-mail:" TextColor="Black" FontSize="Medium"/>
+                <Label Text="{Binding ShowEmail}" TextColor="Gray" FontSize="Medium"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="8" Padding="10,0,10,20" Orientation="Horizontal">
+                <Button 
+                VerticalOptions="Center" 
+                BackgroundColor="#717171"
+                CornerRadius="60"
+                ImageSource="icon_user.png"
+                Text="Save changes" 
+                Command="{Binding SaveProfileChanges}"/>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
